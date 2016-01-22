@@ -1,6 +1,9 @@
-package com.zitro.casino;
+package com.zitro.casino.core;
 
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+
+import com.zitro.casino.PlayTask;
+import com.zitro.casino.Player;
 
 @SuppressWarnings("serial")
 public class CasinoPoolManager extends ThreadPoolTaskExecutor {

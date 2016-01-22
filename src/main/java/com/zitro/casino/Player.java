@@ -6,32 +6,38 @@ import java.util.UUID;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
+import com.zitro.casino.core.Game;
+import com.zitro.casino.impl.GameImpl;
+
 public class Player {
 
+	private final Logger LOGGER = LogManager.getLogger(Player.class);
 	private UUID uuid;
 	private String name;
 	private BigDecimal balance;
 	private long playingTime;
 	private long waitingTime; //property
 	private String provider;
-	private final Logger LOGGER = LogManager.getLogger(Player.class);
+	private Game game;
 	
 	
 	
-	public Player(String name, BigDecimal balance, long playingTime, long waitingTime, String provider) {
+	
+	public Player(String name, BigDecimal balance, long playingTime, long waitingTime, String provider, Game game) {
 		this.uuid = UUID.randomUUID();
 		this.name = name;
 		this.balance = balance;
 		this.waitingTime = waitingTime;
 		this.playingTime = playingTime;
 		this.provider = provider;
-		System.out.println("Player generated from provider " + provider);
+		this.game = game;
+		System.out.println("Player " + uuid + " generated from provider " + provider);
 	}
 	
 	public void bet(){
 		
 		//1. Let's bet
-		System.out.println(name + " bets");
+		System.out.println(name + " bets with probability " + game.getPrizeProbability());
 		//2. Check if user wins
 		//System.out.println("Did he win? " + false);
 		//3. Update users balance
@@ -86,6 +92,17 @@ public class Player {
 	public void setName(String name) {
 		this.name = name;
 	}
+
+	public Game getGame() {
+		return game;
+	}
+
+	public void setGame(Game game) {
+		this.game = game;
+	}
+
+	
+	
 	
 
 	
