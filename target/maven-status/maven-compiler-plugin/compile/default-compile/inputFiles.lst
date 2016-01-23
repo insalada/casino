@@ -1,6 +1,11 @@
-/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/Player.java
-/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/Game.java
-/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/Provider.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/Apuesta.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/Bet.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/Game.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/Player.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/PlayerFactory.java
 /Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/config/AppConfig.java
-/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/Apuesta.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/PlayTask.java
 /Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/Casino.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/CasinoPoolManager.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/impl/Bingo.java
+/Volumes/Macintosh HD/Users/insalada/Development/projects/casino/src/main/java/com/zitro/casino/core/Provider.java

@@ -1,5 +1,5 @@
 Manifest-Version: 1.0
-Implementation-Title: Spring MVC Application
+Implementation-Title: Casino
 Implementation-Version: 1.0-SNAPSHOT
 Built-By: insalada
 Implementation-Vendor-Id: com.zitro
