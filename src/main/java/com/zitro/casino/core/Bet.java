@@ -8,19 +8,11 @@ import org.springframework.stereotype.Component;
 public class Bet {
 
 	private Random rnd = new Random();
-	
-	public Bet(){
-		System.out.println("bet constructor");
-	}
 
 	public int randomBet(int min, int max) {
 		return rnd.nextInt((max - min) + 1) + min;
 	}
-	
-	public double randomBetDecimal(int min, int max) {
-		return min + (max - min) * rnd.nextDouble();
-	}
-	
+		
 	/**
 	 * Calculates whether the user win or loose based on the given probability
 	 * 

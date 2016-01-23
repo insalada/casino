@@ -9,6 +9,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import com.zitro.casino.config.AppConfig;
 import com.zitro.casino.core.CasinoPoolManager;
 import com.zitro.casino.core.Game;
+import com.zitro.casino.core.Jackpot;
 import com.zitro.casino.core.Player;
 import com.zitro.casino.core.PlayerFactory;
 import com.zitro.casino.impl.Bingo;
@@ -27,6 +28,10 @@ public class Casino {
 		//Loading Spring context
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 				
+		//Initialize Jackpot
+		Jackpot jackpot = (Jackpot) context.getBean("jackpot");
+		jackpot.setAmount(BigDecimal.ZERO);
+		
 		//Generate Games
 		Game bingo = (Bingo) context.getBean("bingo");
 		Game ruleta = (Ruleta) context.getBean("ruleta");
@@ -34,7 +39,7 @@ public class Casino {
 		//Generate Players
 		PlayerFactory factory = (PlayerFactory) context.getBean("factory");
 		Player ivan = factory.generate("ivan", "200", 10000, 1000, "Bet356");
-		Player pepe = factory.generate("pepe", "300", 20000, 5000, "Marca Apuestas");
+		Player pepe = factory.generate("pepe", "300", 20000, 2000, "Marca Apuestas");
 		
 		//Users sit on a choosen game
 		//TODO: randomize
@@ -45,7 +50,7 @@ public class Casino {
 	    //Dispatch Players
 	    CasinoPoolManager manager = (CasinoPoolManager) context.getBean("manager");
 	    manager.dispatchPlayer(ivan);
-	    //manager.dispatchPlayer(pepe);
+	    manager.dispatchPlayer(pepe);
 	    
 	    
 	    

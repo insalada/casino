@@ -25,6 +25,8 @@ public class Player {
 	
 	@Autowired
 	private Bet bet;
+	@Autowired
+	private Jackpot jackpot;
 	
 	//remove
 	public Player(){
@@ -42,51 +44,53 @@ public class Player {
 		System.out.println("Player " + uuid + " generated from provider " + provider);
 	}
 	
-	public void play(){
-		
-		//Let us play
-		System.out.println("---------------");
-				
+	public void play(){		
+						
 		//User makes a bet
 		int betAmount = bet.randomBet(game.getBetMin(), game.getBetMax());
-		System.out.println(name + ": bets " + betAmount);
 		
-		
-		//Check whether the bet is within the bounds
-		if(betAmount < game.getBetMin() && betAmount > game.getBetMax()) {
-			System.out.println(name + ": Incorrect bet. Please bet between " + game.getBetMin() + " and " + game.getBetMax());
-			return;
-		}
-		
-		//Check whether the user has enough credit
-		if(balance.compareTo(new BigDecimal(betAmount)) < 0) {
-			System.out.println(name + ": Insufficient funds. Your current balance is " + formatBalance());
-			return;
-		}
-		
+		//Pass validations
+		if(!validBet(betAmount)) return;
 		
 		//Check whether the user win
 		boolean isWinner = bet.isLucky(game.getPrizeProbability());
-		System.out.println(name + ": Did the player win the prize? " + isWinner);
-		
+ 		
 		//Update the balance
-		updateBalance(betAmount, isWinner);
-		System.out.println(name + ": balance is " + formatBalance());
+		betAmount = updateBalance(betAmount, isWinner);
 		
-
-	
+		//Output log
+		LOGGER.info("Transaction: " + UUID.randomUUID() + " Player: " + uuid + " Amount: " + betAmount + " Game: " + game.getName());
 	}
 	
 	/**
 	 * Add or Substract funds from the players credit 
 	 * @param isWinner
 	 */
-	private void updateBalance(int betAmount, boolean isWinner) {
-		if(isWinner) {
-			balance = balance.add(new BigDecimal(betAmount));
-		}else {
-			balance = balance.subtract(new BigDecimal(betAmount));
+	private int updateBalance(int betAmount, boolean isWinner) {
+		if(!isWinner) {
+			betAmount = -betAmount;
 		}
+		balance = balance.add(new BigDecimal(betAmount));
+		return betAmount;
+	}
+	
+	/**
+	 * Check validations
+	 * @return true if passed validations
+	 */
+	private boolean validBet(int betAmount) {
+		//Check whether the bet is within the bounds
+		if(betAmount < game.getBetMin() && betAmount > game.getBetMax()) {
+			System.err.println(name + ": Incorrect bet: " + betAmount + " Please bet between " + game.getBetMin() + " and " + game.getBetMax());
+			return false;
+		}
+		
+		//Check whether the user has enough credit
+		if(balance.compareTo(new BigDecimal(betAmount)) < 0) {
+			System.err.println(name + ": Insufficient funds for bet " + betAmount + " Your current balance is " + formatBalance());
+			return false;
+		}
+		return true;
 	}
 	
 	private String formatBalance() {
