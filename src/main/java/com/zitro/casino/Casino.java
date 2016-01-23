@@ -33,8 +33,8 @@ public class Casino {
 		
 		//Generate Players
 		PlayerFactory factory = (PlayerFactory) context.getBean("factory");
-		Player ivan = factory.generate("ivan", new BigDecimal("200"), 10000, 1000, "Bet356");
-		Player pepe = factory.generate("pepe", new BigDecimal("300"), 20000, 5000, "Marca Apuestas");
+		Player ivan = factory.generate("ivan", "200", 10000, 1000, "Bet356");
+		Player pepe = factory.generate("pepe", "300", 20000, 5000, "Marca Apuestas");
 		
 		//Users sit on a choosen game
 		//TODO: randomize

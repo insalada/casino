@@ -70,7 +70,7 @@ public class PlayTask implements Runnable {
 	 * Provides a more readable format time
 	 * @return String with ms formatted
 	 */
-	public String formatTime(long ms) {
+	private String formatTime(long ms) {
 		return String.format("%d min %d sec", 
 		    TimeUnit.MILLISECONDS.toMinutes(ms),
 		    TimeUnit.MILLISECONDS.toSeconds(ms) - 

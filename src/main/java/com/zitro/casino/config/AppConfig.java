@@ -61,9 +61,6 @@ public class AppConfig {
 		return new Bet();
 	}
 	
-	@Bean
-	Player ivan() {
-		return new Player("ivan", new BigDecimal("100"), 10000, 1000, "Bet356");
-	}
+
 
 }

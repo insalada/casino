@@ -32,10 +32,10 @@ public class Player {
 		System.out.println("player normal constructor");
 	}
 		
-	public Player(String name, BigDecimal balance, long playingTime, long waitingTime, String provider) {
+	public Player(String name, String balance, long playingTime, long waitingTime, String provider) {
 		this.uuid = UUID.randomUUID();
 		this.name = name;
-		this.balance = balance;
+		this.balance = new BigDecimal(balance);
 		this.waitingTime = waitingTime;
 		this.playingTime = playingTime;
 		this.provider = provider;
@@ -44,16 +44,24 @@ public class Player {
 	
 	public void play(){
 		
-		
+		//Let us play
+		System.out.println("---------------");
+				
 		//User makes a bet
 		int betAmount = bet.randomBet(game.getBetMin(), game.getBetMax());
-		System.out.println(name + ": makes a bet of " + betAmount);
+		System.out.println(name + ": bets " + betAmount);
 		
 		
-		//Check whether the user has credit
-		//enough credit for what?? for the minBet or for the random Bet!
-		if(betAmount < game.getBetMin()) {
-			System.out.println(name + ": sorry, the minimun bet is " + game.getBetMin());
+		//Check whether the bet is within the bounds
+		if(betAmount < game.getBetMin() && betAmount > game.getBetMax()) {
+			System.out.println(name + ": Incorrect bet. Please bet between " + game.getBetMin() + " and " + game.getBetMax());
+			return;
+		}
+		
+		//Check whether the user has enough credit
+		if(balance.compareTo(new BigDecimal(betAmount)) < 0) {
+			System.out.println(name + ": Insufficient funds. Your current balance is " + formatBalance());
+			return;
 		}
 		
 		
@@ -63,7 +71,7 @@ public class Player {
 		
 		//Update the balance
 		updateBalance(betAmount, isWinner);
-		System.out.println(name + ": balance is " + balance.setScale(2, BigDecimal.ROUND_HALF_UP));
+		System.out.println(name + ": balance is " + formatBalance());
 		
 
 	
@@ -79,6 +87,10 @@ public class Player {
 		}else {
 			balance = balance.subtract(new BigDecimal(betAmount));
 		}
+	}
+	
+	private String formatBalance() {
+		return balance.setScale(2, BigDecimal.ROUND_HALF_UP).toString();
 	}
 
 	public UUID getUuid() {
