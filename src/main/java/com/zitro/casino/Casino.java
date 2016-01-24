@@ -5,7 +5,6 @@ import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.zitro.casino.config.AppConfig;
-import com.zitro.casino.core.CasinoPoolManager;
 import com.zitro.casino.core.Config;
 import com.zitro.casino.core.Game;
 import com.zitro.casino.core.Player;
@@ -13,6 +12,7 @@ import com.zitro.casino.core.Provider;
 import com.zitro.casino.factory.ConfigFactory;
 import com.zitro.casino.factory.GameFactory;
 import com.zitro.casino.factory.PlayerFactory;
+import com.zitro.casino.manager.CasinoPoolManager;
 
 /**
  * 
@@ -67,11 +67,11 @@ public class Casino {
 		
 	    //Dispatch Players
 	    CasinoPoolManager manager = (CasinoPoolManager) context.getBean("manager");
-	    manager.dispatchPlayer(ivan, bingoIvan, configIvan);
-	    manager.dispatchPlayer(pepe, slotPepe, configPepe);
-	    manager.dispatchPlayer(noelia, blackjackNoe, configNoelia);
-	    manager.dispatchPlayer(elsa, pokerElsa, configElsa);
-	    manager.dispatchPlayer(javier, ruletaJavier, configJavier);
+	    manager.dispatchPlayer(ivan, bingoIvan);
+	    manager.dispatchPlayer(pepe, slotPepe);
+	    manager.dispatchPlayer(noelia, blackjackNoe);
+	    manager.dispatchPlayer(elsa, pokerElsa);
+	    manager.dispatchPlayer(javier, ruletaJavier);
 	    
 	    //Free Spring context
 	    ((ConfigurableApplicationContext)context).close();

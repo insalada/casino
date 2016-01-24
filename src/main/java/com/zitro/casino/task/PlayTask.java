@@ -1,4 +1,4 @@
-package com.zitro.casino.core;
+package com.zitro.casino.task;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -9,6 +9,10 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+
+import com.zitro.casino.core.Bet;
+import com.zitro.casino.core.Jackpot;
+import com.zitro.casino.core.Player;
 
 /**
  * Contains the users bet logic
@@ -80,8 +84,6 @@ public class PlayTask implements Runnable {
 				System.out.println(player.getName() + " " + player.getUuid() + ": WON THE JACKPOT!: " + jackpot.getAmount());
 				BigDecimal newBalance = jackpot.win(player.getBalance());
 				player.setBalance(newBalance);
-				//player.setBalance(player.getBalance().add(jackpot.getAmount()));
-				//jackpot.setAmount(BigDecimal.ZERO);//Reset the jackpot
 			}
 		}else{
 			betAmount = betAmount.negate();

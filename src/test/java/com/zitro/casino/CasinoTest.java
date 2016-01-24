@@ -1,29 +1,31 @@
 package com.zitro.casino;
 
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertTrue;
+
+import java.math.BigDecimal;
 
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
 import com.zitro.casino.config.AppConfig;
-import com.zitro.casino.core.CasinoPoolManager;
+import com.zitro.casino.core.Bet;
 import com.zitro.casino.core.Config;
 import com.zitro.casino.core.Game;
-import com.zitro.casino.core.Player;
-import com.zitro.casino.core.Provider;
+import com.zitro.casino.core.Jackpot;
 import com.zitro.casino.factory.ConfigFactory;
 import com.zitro.casino.factory.GameFactory;
-import com.zitro.casino.factory.PlayerFactory;
+import com.zitro.casino.impl.Bingo;
 
 
 /**
- * Tests for the 
+ * Some Tests for the casino
  * @author insalada
  *
  */
@@ -32,39 +34,71 @@ import com.zitro.casino.factory.PlayerFactory;
 public class CasinoTest {
 	
 	@Autowired
-	private ApplicationContext context;
-	@Autowired
-	private PlayerFactory playerFactory;
-	@Autowired
 	private GameFactory gameFactory;
 	@Autowired
-	private CasinoPoolManager manager;
-	
-	private Provider mockProvider;
-	private Player mockPlayer;
+	private Bet bet;
+	@Autowired
+	private Jackpot jackpot;
 	private Config mockConfig;
-	
-	private String test = null;
+	private Game mockGame;
 	
 	
 	@Before
     public void init() {
-		mockProvider = new Provider("Bwin");
-		mockPlayer = playerFactory.generate("Mock", "500", 20, 4, mockProvider);
 		mockConfig = ConfigFactory.create(10, 50);
-		
+		mockGame = gameFactory.create("VIDEOBINGO", mockConfig);
     }
 	
+	
 	@Test
-	public void testMain() {
-		
-		Game bingo = gameFactory.create("VIDEOBINGO", mockConfig);
-		manager.dispatchPlayer(mockPlayer, bingo, mockConfig);
-		//assertTrue(test==null);
+	public void should_factory_game_return_proper_instanceof() {
+		assertTrue(mockGame instanceof Bingo);
 	}
 	
-	public void should_never_change_quailty_of_Millenary_Honey() throws Exception {
-		
+	
+	@Test
+	public void should_the_game_have_setted_config() throws Exception {
+		assertEquals(mockConfig, mockGame.getConfig());
+	}
+	
+	@Test
+	public void should_random_bet_return_a_number_within_range() {
+		BigDecimal randomBd = bet.randomBet(10, 20);
+		BigDecimal mockMin = new BigDecimal("10");
+		BigDecimal mockMax = new BigDecimal("20");
+		assertTrue(randomBd.compareTo(mockMin) >= 0 && randomBd.compareTo(mockMax) <= 0);
+	}
+	
+	@Test
+	public void should_isLucky_return_true_when_100_probabilities() {
+		assertTrue(bet.isLucky(100));
+	}
+	
+	@Test
+	public void should_isLucky_return_false_when_0_probabilities() {
+		assertFalse(bet.isLucky(0));
+	}
+
+	
+	@Test
+	public void should_jackpot_been_reset_when_somebody_wins() {
+		BigDecimal mockAmount = new BigDecimal("100");
+		jackpot.setAmount(mockAmount);
+		jackpot.win(mockAmount);
+		assertTrue(jackpot.getAmount().compareTo(BigDecimal.ZERO) == 0);
+	}
+	
+	@Test
+	public void should_jackpot_return_the_added_balance_when_somebody_wins() {
+		jackpot.setAmount(BigDecimal.ZERO);
+		BigDecimal mockAmount = new BigDecimal("50");
+		BigDecimal balance = jackpot.win(mockAmount);
+		assertEquals(mockAmount, balance);
+	}
+	
+	@Test
+	public void should_properties_file_been_loaded() throws Exception {
+		assertNotNull(mockGame.getName());
 	}
 	
 }

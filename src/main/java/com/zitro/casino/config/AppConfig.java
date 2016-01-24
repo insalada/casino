@@ -6,10 +6,11 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-import com.zitro.casino.core.CasinoPoolManager;
+
 import com.zitro.casino.factory.GameFactory;
 import com.zitro.casino.factory.PlayTaskFactory;
 import com.zitro.casino.factory.PlayerFactory;
+import com.zitro.casino.manager.CasinoPoolManager;
 
 /**
  * Configuration annotation-based for the spring context
@@ -19,6 +20,7 @@ import com.zitro.casino.factory.PlayerFactory;
 @Configuration
 @ComponentScan(basePackages = "com.zitro.casino")
 @PropertySource("classpath:casino.properties")
+//@PropertySource("file:src/main/resources/casino.properties")
 public class AppConfig {
 	
 	@Value("${poolsize}")

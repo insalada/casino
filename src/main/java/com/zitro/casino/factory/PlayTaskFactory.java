@@ -4,8 +4,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.zitro.casino.core.PlayTask;
 import com.zitro.casino.core.Player;
+import com.zitro.casino.task.PlayTask;
 
 /**
  * Factory creator for the tasks

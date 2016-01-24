@@ -1,10 +1,12 @@
-package com.zitro.casino.core;
+package com.zitro.casino.manager;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
 
+import com.zitro.casino.core.Game;
+import com.zitro.casino.core.Player;
 import com.zitro.casino.factory.PlayTaskFactory;
+import com.zitro.casino.task.PlayTask;
 
 /**
  * 
@@ -27,12 +29,9 @@ public class CasinoPoolManager extends ThreadPoolTaskExecutor {
 	 * @param player
 	 * @param game
 	 */
-	public void dispatchPlayer(Player player, Game game, Config config) {
+	public void dispatchPlayer(Player player, Game game) {
 		//Sit a player in the choosen game
 		player.setGame(game);
-		
-		//Set game settings
-		
 		
 		//Instance a background task based on the player values
 		PlayTask task = taskFactory.create(player);		
