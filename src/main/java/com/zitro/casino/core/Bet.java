@@ -1,16 +1,30 @@
 package com.zitro.casino.core;
 
-import java.util.Random;
 
+import java.math.BigDecimal;
+import java.util.Random;
 import org.springframework.stereotype.Component;
 
+/**
+ * Provides methods for the players bet 
+ * 
+ * @author insalada
+ *
+ */
 @Component
 public class Bet {
 
 	private Random rnd = new Random();
 
-	public int randomBet(int min, int max) {
-		return rnd.nextInt((max - min) + 1) + min;
+	/**
+	 * Returns a random value within a range cast to BigDecimal
+	 * 
+	 * @param min
+	 * @param max
+	 * @return BigDecimal with the random value
+	 */
+	public BigDecimal randomBet(int min, int max) {
+		return new BigDecimal(rnd.nextInt((max - min) + 1) + min);
 	}
 		
 	/**

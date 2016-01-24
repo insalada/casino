@@ -1,11 +1,12 @@
 package com.zitro.casino.core;
 
 /**
- * Interface specifically for a Game behaviour
+ * Interface for a Game behaviour
  * 
  * @author insalada
  *
  */
+
 public interface Game {
 	/**
 	 * Gets the name of the game
@@ -16,14 +17,9 @@ public interface Game {
 	 * Gets the chances to win the prize
 	 */
 	int getPrizeProbability();
-	
+		
 	/**
-	 * Gets the minimun bet amount 
+	 * Gets the game config
 	 */
-	int getBetMin();
-	
-	/**
-	 * Gets the maximal bet amount
-	 */
-	int getBetMax();
+	Config getConfig();
 }

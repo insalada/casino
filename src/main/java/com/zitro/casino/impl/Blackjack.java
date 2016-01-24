@@ -6,25 +6,23 @@ import com.zitro.casino.core.Config;
 import com.zitro.casino.core.Game;
 
 /**
- * Game implementation for Ruleta
+ * Game implementation for BlackJack
  * 
  * @author insalada
  *
  */
-public class Ruleta implements Game {
-
-	@Value("${name.ruleta}")
+public class Blackjack implements Game {
+	@Value("${name.blackjack}")
 	private String name;
-	@Value("${prize.probability.ruleta}")
+	@Value("${prize.probability.blackjack}")
     private int prizeProbability;
 	private Config config;
-	
 	
 	/**
 	 * Constructor based on the given configuration
 	 * @param config
 	 */
-	public Ruleta(Config config) {
+	public Blackjack(Config config) {
 		this.config = config;
 	}
 	
@@ -35,9 +33,9 @@ public class Ruleta implements Game {
 	public int getPrizeProbability() {
 		return prizeProbability;
 	}
-
 	
 	public Config getConfig() {
 		return config;
 	}
 }
+	

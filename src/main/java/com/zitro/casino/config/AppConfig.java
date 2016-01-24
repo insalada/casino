@@ -1,30 +1,30 @@
 package com.zitro.casino.config;
 
-import java.math.BigDecimal;
-
-import org.springframework.beans.factory.annotation.Autowire;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
-
-import com.zitro.casino.core.Bet;
 import com.zitro.casino.core.CasinoPoolManager;
-import com.zitro.casino.core.Game;
-import com.zitro.casino.core.Player;
-import com.zitro.casino.core.PlayerFactory;
-import com.zitro.casino.impl.Bingo;
-import com.zitro.casino.impl.Ruleta;
+import com.zitro.casino.factory.GameFactory;
+import com.zitro.casino.factory.PlayTaskFactory;
+import com.zitro.casino.factory.PlayerFactory;
 
+/**
+ * Configuration annotation-based for the spring context
+ * @author insalada
+ *
+ */
 @Configuration
-//@ComponentScan({ "com.zitro.casino.core"})
-//@ComponentScan("com.zitro.casino")
 @ComponentScan(basePackages = "com.zitro.casino")
-//@ComponentScan(basePackages = {"com.zitro.**"})
 @PropertySource("classpath:casino.properties")
 public class AppConfig {
+	
+	@Value("${poolsize}")
+	private int poolsize;
+	@Value("${maxpoolsize}")
+	private int maxPoolsize;
 	
 	@Bean
 	static PropertySourcesPlaceholderConfigurer propertySourcesPlaceholderConfigurer() {
@@ -34,33 +34,24 @@ public class AppConfig {
 	@Bean
 	public CasinoPoolManager manager() {
 		CasinoPoolManager pool = new CasinoPoolManager();
-		pool.setCorePoolSize(5);
-		pool.setMaxPoolSize(10);
+		pool.setCorePoolSize(poolsize);
+		pool.setMaxPoolSize(maxPoolsize);
 		pool.setWaitForTasksToCompleteOnShutdown(true);
 		return pool;
 	}
 
-	@Bean 
-	Game bingo() {
-		return new Bingo();
-	}
-	
-	@Bean 
-	Game ruleta() {
-		return new Ruleta();
-	}
-
 	@Bean
-	PlayerFactory factory() {
+	PlayerFactory playerFactory() {
 		return new PlayerFactory();
 	}
 	
-	
 	@Bean
-	Bet bet() {
-		return new Bet();
+	GameFactory gameFactory() {
+		return new GameFactory();
 	}
 	
-
-
+	@Bean
+	PlayTaskFactory taskFactory() {
+		return new PlayTaskFactory();
+	}
 }

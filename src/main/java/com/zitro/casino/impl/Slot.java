@@ -4,27 +4,24 @@ import org.springframework.beans.factory.annotation.Value;
 
 import com.zitro.casino.core.Config;
 import com.zitro.casino.core.Game;
-
 /**
- * Game implementation for Ruleta
+ * Game implementation for Slot
  * 
  * @author insalada
  *
  */
-public class Ruleta implements Game {
-
-	@Value("${name.ruleta}")
+public class Slot implements Game {
+	@Value("${name.slot}")
 	private String name;
-	@Value("${prize.probability.ruleta}")
+	@Value("${prize.probability.slot}")
     private int prizeProbability;
 	private Config config;
-	
 	
 	/**
 	 * Constructor based on the given configuration
 	 * @param config
 	 */
-	public Ruleta(Config config) {
+	public Slot(Config config) {
 		this.config = config;
 	}
 	
@@ -36,8 +33,8 @@ public class Ruleta implements Game {
 		return prizeProbability;
 	}
 
-	
 	public Config getConfig() {
 		return config;
 	}
 }
+	
