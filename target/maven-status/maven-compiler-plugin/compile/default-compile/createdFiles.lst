@@ -4,8 +4,6 @@ com/zitro/casino/config/AppConfig.class
 com/zitro/casino/core/Bet.class
 com/zitro/casino/core/Game.class
 com/zitro/casino/core/CasinoPoolManager.class
-com/zitro/casino/core/PlayerFactory.class
-com/zitro/casino/core/Apuesta.class
 com/zitro/casino/Casino.class
 com/zitro/casino/core/Provider.class
 com/zitro/casino/core/PlayTask.class

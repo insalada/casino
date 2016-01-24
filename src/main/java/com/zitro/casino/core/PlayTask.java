@@ -60,7 +60,7 @@ public class PlayTask implements Runnable {
 			betAmount = updateBalance(betAmount, isWinner, isJackpot);
 			
 			//Output log
-			LOGGER.info(isJackpot + "Transaction: " + UUID.randomUUID() + " Player: " + player.getName() + ", " + player.getUuid() + " Game: " + player.getGame().getName() + " Amount: " + formatAmount(betAmount) + " Current Balance: " + formatAmount(player.getBalance()));			
+			LOGGER.info("Transaction: " + UUID.randomUUID() + " Player: " + player.getName() + ", uuid: " + player.getUuid() + " Game: " + player.getGame().getName() + " Amount: " + formatAmount(betAmount) + " Current Balance: " + formatAmount(player.getBalance()));			
 			
 			//Player must wait till the next bet
 			try {Thread.sleep(player.getWaitingTime()*1000);} catch (InterruptedException e) {}
@@ -77,7 +77,7 @@ public class PlayTask implements Runnable {
 	private BigDecimal updateBalance(BigDecimal betAmount, boolean isWinner, boolean isJackpot) {
 		if(isWinner) {
 			if(isJackpot) {
-				System.out.println(player.getName() + ": CONGRATS! YOU WON THE JACKPOT: " + jackpot.getAmount());
+				System.out.println(player.getName() + " " + player.getUuid() + ": WON THE JACKPOT!: " + jackpot.getAmount());
 				BigDecimal newBalance = jackpot.win(player.getBalance());
 				player.setBalance(newBalance);
 				//player.setBalance(player.getBalance().add(jackpot.getAmount()));
