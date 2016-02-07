@@ -1,4 +1,4 @@
-package com.zitro.casino.task;
+package com.ipbsoft.casino.task;
 
 import java.math.BigDecimal;
 import java.util.UUID;
@@ -10,9 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
 
-import com.zitro.casino.core.Bet;
-import com.zitro.casino.core.Jackpot;
-import com.zitro.casino.core.Player;
+import com.ipbsoft.casino.core.Bet;
+import com.ipbsoft.casino.core.Jackpot;
+import com.ipbsoft.casino.core.Player;
 
 /**
  * Contains the users bet logic

@@ -1,8 +1,8 @@
-package com.zitro.casino.factory;
+package com.ipbsoft.casino.factory;
 
 import org.springframework.context.annotation.Bean;
 
-import com.zitro.casino.core.Config;
+import com.ipbsoft.casino.core.Config;
 
 /**
  * Factory objects creator for the game config 

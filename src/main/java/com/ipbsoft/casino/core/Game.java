@@ -1,4 +1,4 @@
-package com.zitro.casino.core;
+package com.ipbsoft.casino.core;
 
 /**
  * Interface for a Game behaviour

@@ -1,18 +1,18 @@
-package com.zitro.casino;
+package com.ipbsoft.casino;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.ConfigurableApplicationContext;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
-import com.zitro.casino.config.AppConfig;
-import com.zitro.casino.core.Config;
-import com.zitro.casino.core.Game;
-import com.zitro.casino.core.Player;
-import com.zitro.casino.core.Provider;
-import com.zitro.casino.factory.ConfigFactory;
-import com.zitro.casino.factory.GameFactory;
-import com.zitro.casino.factory.PlayerFactory;
-import com.zitro.casino.manager.CasinoPoolManager;
+import com.ipbsoft.casino.config.AppConfig;
+import com.ipbsoft.casino.core.Config;
+import com.ipbsoft.casino.core.Game;
+import com.ipbsoft.casino.core.Player;
+import com.ipbsoft.casino.core.Provider;
+import com.ipbsoft.casino.factory.ConfigFactory;
+import com.ipbsoft.casino.factory.GameFactory;
+import com.ipbsoft.casino.factory.PlayerFactory;
+import com.ipbsoft.casino.manager.CasinoPoolManager;
 
 /**
  * 
@@ -31,7 +31,7 @@ public class Casino {
 	public static void main(String[] args) {
 		
 		//Say Hello
-		System.out.println("Welcome to Zitro Casino");
+		System.out.println("Welcome to the ipbSoft Casino");
 		
 		//Loading Spring context
 		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);

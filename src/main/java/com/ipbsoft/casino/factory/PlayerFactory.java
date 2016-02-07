@@ -1,11 +1,11 @@
-package com.zitro.casino.factory;
+package com.ipbsoft.casino.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.zitro.casino.core.Player;
-import com.zitro.casino.core.Provider;
+import com.ipbsoft.casino.core.Player;
+import com.ipbsoft.casino.core.Provider;
 
 /**
  * Factory creator for the players

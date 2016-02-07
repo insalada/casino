@@ -1,27 +1,26 @@
-package com.zitro.casino.impl;
+package com.ipbsoft.casino.impl;
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Scope;
 
-import com.zitro.casino.core.Config;
-import com.zitro.casino.core.Game;
+import com.ipbsoft.casino.core.Config;
+import com.ipbsoft.casino.core.Game;
+
 /**
- * Game implementation for Slot
- * 
+ * Game implementation for Bingo
  * @author insalada
  *
  */
-public class Slot implements Game {
-	@Value("${name.slot}")
+@Scope("prototype")
+public class Bingo implements Game {
+	
+	@Value("${name.bingo}")
 	private String name;
-	@Value("${prize.probability.slot}")
+	@Value("${prize.probability.bingo}")
     private int prizeProbability;
 	private Config config;
 	
-	/**
-	 * Constructor based on the given configuration
-	 * @param config
-	 */
-	public Slot(Config config) {
+	public Bingo(Config config) {
 		this.config = config;
 	}
 	

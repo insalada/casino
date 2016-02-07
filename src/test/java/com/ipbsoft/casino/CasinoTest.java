@@ -1,4 +1,4 @@
-package com.zitro.casino;
+package com.ipbsoft.casino;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
@@ -14,14 +14,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.zitro.casino.config.AppConfig;
-import com.zitro.casino.core.Bet;
-import com.zitro.casino.core.Config;
-import com.zitro.casino.core.Game;
-import com.zitro.casino.core.Jackpot;
-import com.zitro.casino.factory.ConfigFactory;
-import com.zitro.casino.factory.GameFactory;
-import com.zitro.casino.impl.Bingo;
+import com.ipbsoft.casino.config.AppConfig;
+import com.ipbsoft.casino.core.Bet;
+import com.ipbsoft.casino.core.Config;
+import com.ipbsoft.casino.core.Game;
+import com.ipbsoft.casino.core.Jackpot;
+import com.ipbsoft.casino.factory.ConfigFactory;
+import com.ipbsoft.casino.factory.GameFactory;
+import com.ipbsoft.casino.impl.Bingo;
 
 
 /**

@@ -1,16 +1,16 @@
-package com.zitro.casino.factory;
+package com.ipbsoft.casino.factory;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 
-import com.zitro.casino.core.Config;
-import com.zitro.casino.core.Game;
-import com.zitro.casino.impl.Bingo;
-import com.zitro.casino.impl.Blackjack;
-import com.zitro.casino.impl.Poker;
-import com.zitro.casino.impl.Ruleta;
-import com.zitro.casino.impl.Slot;
+import com.ipbsoft.casino.core.Config;
+import com.ipbsoft.casino.core.Game;
+import com.ipbsoft.casino.impl.Bingo;
+import com.ipbsoft.casino.impl.Blackjack;
+import com.ipbsoft.casino.impl.Poker;
+import com.ipbsoft.casino.impl.Ruleta;
+import com.ipbsoft.casino.impl.Slot;
 
 /**
  * Implementation of the Factory Pattern for creating the different Game instances

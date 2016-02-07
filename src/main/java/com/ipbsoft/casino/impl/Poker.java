@@ -1,43 +1,41 @@
-package com.zitro.casino.impl;
+package com.ipbsoft.casino.impl;
 
 import org.springframework.beans.factory.annotation.Value;
 
-import com.zitro.casino.core.Config;
-import com.zitro.casino.core.Game;
-
+import com.ipbsoft.casino.core.Config;
+import com.ipbsoft.casino.core.Game;
 /**
- * Game implementation for Ruleta
+ * Game implementation for Poker
  * 
  * @author insalada
  *
  */
-public class Ruleta implements Game {
-
-	@Value("${name.ruleta}")
+public class Poker implements Game {
+	@Value("${name.poker}")
 	private String name;
-	@Value("${prize.probability.ruleta}")
+	@Value("${prize.probability.poker}")
     private int prizeProbability;
 	private Config config;
-	
 	
 	/**
 	 * Constructor based on the given configuration
 	 * @param config
 	 */
-	public Ruleta(Config config) {
+	public Poker(Config config) {
 		this.config = config;
 	}
 	
 	public String getName() {
 		return name;
 	}
-	
+
 	public int getPrizeProbability() {
 		return prizeProbability;
 	}
-
 	
 	public Config getConfig() {
 		return config;
 	}
+
 }
+	
